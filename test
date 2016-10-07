@@ -1,0 +1,68 @@
+import java.util.LinkedList;
+
+/**
+ * Created by jier on 16-9-30.
+ */
+
+class QueueToStack{
+    LinkedList Q1 = new LinkedList();
+    LinkedList Q2 = new LinkedList();
+
+    public void push(int val){
+        Q1.add(val);
+    }
+
+    public void pop(){
+        int val, tmp;
+        int len1 = Q1.size();
+
+        if(len1 == 1)
+            val = (Integer)Q1.removeFirst();
+
+        else {
+            for (int i = 0; i < len1 - 1; i++) {
+                tmp = (Integer)Q1.removeFirst();
+                Q2.add(tmp);
+            }
+
+            val = (Integer)Q1.removeFirst();
+
+            int len2 = Q2.size();
+            for (int i = 0; i < len2; i++) {
+                tmp = (Integer)Q2.removeFirst();
+                Q1.add(tmp);
+            }
+        }
+        System.out.print(val + " ");
+    }
+}
+
+public class TextQueueToTtack {
+    public static void main(String[] args) {
+        QueueToStack s = new QueueToStack();
+
+        System.out.print("元素入栈：");
+        for (int i = 0; i < 3; i++) {
+            s.push(i);
+            System.out.print(i + " ");
+        }
+
+        System.out.print("元素出栈:");
+        for (int i = 0; i < 1; i++) {
+            s.pop();
+        }
+
+        System.out.print("元素入栈：");
+        for (int i = 4; i < 6; i++) {
+            s.push(i);
+            System.out.print(i + " ");
+        }
+
+        System.out.print("元素出栈:");
+        for (int i = 0; i < 4; i++) {
+            s.pop();
+        }
+
+
+    }
+}
